@@ -1,0 +1,6 @@
+[deploy_script]
+192.168.33.10
+
+[all:vars]
+stage=local
+deploy_script_repository_dir=/vagrant/project/

@@ -1,0 +1,64 @@
+- name: supervisor install
+  become: true
+  command: easy_install supervisor
+  tags:
+    - supervisord
+- name: make supervisord.conf
+  become: true
+  command: echo_supervisord_conf >/etc/supervisord.conf
+  tags:
+    - supervisord
+- name: mkdir supervisord.conf
+  become: true
+  file: path=/etc/supervisord.conf.d state=directory owner=root group=root mode=0777
+  tags:
+    - supervisord
+- name: add supervisord.conf include file
+  become: true
+  lineinfile:
+    dest='/etc/supervisord.conf'
+    line={{ item }}
+  with_items:
+    - '[include]'
+    - 'files = /etc/supervisord.conf.d/*.conf'
+  tags:
+    - supervisord
+- name: mkdir supervisord log
+  become: true
+  file: path=/var/log/supervisord state=directory owner=root group=root mode=0777
+  tags:
+    - supervisord
+- name: make blue.conf
+  become: true
+  template: src=supervisord.conf_blue.j2 dest=/etc/supervisord.conf.d/blue.conf mode=0722
+  tags:
+    - supervisord
+- name: make green.conf
+  become: true
+  template: src=supervisord.conf_green.j2 dest=/etc/supervisord.conf.d/green.conf mode=0722
+  tags:
+    - supervisord
+- name: install the latest version of supervisor
+  become: true
+  yum: name=supervisor state=latest
+  tags:
+    - supervisord
+- name: supervisord enabled
+  become: true
+  service: name=supervisord enabled=yes
+  tags:
+    - supervisord
+- name: supervisord start
+  become: true
+  service: name=supervisord state=started
+  ignore_errors: True
+  tags:
+    - supervisord
+- name: supervisord blue start
+  become: true
+  shell: supervisorctl start blue
+    - supervisord
+- name: supervisord green start
+  become: true
+  shell: supervisorctl stop green
+    - supervisord

@@ -1,0 +1,8 @@
+filename="nginx_${1}.conf"
+
+supervisorctl start ${1}
+
+cp -r /root/$filename /etc/nginx/conf.d/vhosts.conf
+nginx -s reload
+
+supervisorctl stop ${2}

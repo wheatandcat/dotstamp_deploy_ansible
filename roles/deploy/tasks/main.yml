@@ -1,0 +1,21 @@
+- name: clone repo dotstamp_deploy
+  become: false
+  git: "repo=git@bitbucket.org:pandemo/dotstamp_deploy.git dest=/project/dotstamp_deploy accept_hostkey=true"
+  tags:
+    - git
+    - deploy
+- name: project blue directory
+  become: true
+  file: path=/project/blue state=directory owner=root group=root mode=0777
+  tags:
+    - deploy
+- name: project green directory
+  become: true
+  file: path=/project/green state=directory owner=root group=root mode=0777
+  tags:
+    - deploy
+- name: make deploy shell
+  become: true
+  template: src=deploy.sh.j2 dest=/root/deploy.sh mode=0700
+  tags:
+    - deploy

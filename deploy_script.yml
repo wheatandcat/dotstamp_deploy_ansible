@@ -1,0 +1,4 @@
+- hosts: deploy_script
+  become: yes
+  roles:
+    - deploy_script

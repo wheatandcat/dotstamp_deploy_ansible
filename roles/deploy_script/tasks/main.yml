@@ -1,0 +1,5 @@
+- name: clone repo dotstamp_deploy_script
+  become: false
+  git: "repo=git@bitbucket.org:pandemo/dotstamp_deploy_script.git dest={{ deploy_script_repository_dir }}dotstamp_deploy_script accept_hostkey=true"
+  tags:
+    - git

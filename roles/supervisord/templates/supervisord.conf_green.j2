@@ -1,0 +1,9 @@
+[program:green]
+directory = /project/green/dotstamp_server
+environment = ENV_CONF=prod_green
+command = /project/green/dotstamp_server/dotstamp_server
+autostart = true
+startsecs = 5
+user = root
+redirect_stderr = true
+stdout_logfile = /var/log/supervisord/green.log
