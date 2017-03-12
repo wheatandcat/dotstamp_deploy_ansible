@@ -9,9 +9,67 @@
   file: path=/project/blue state=directory owner=root group=root mode=0777
   tags:
     - deploy
+- name: project blue directory tool open-jtalk
+  become: true
+  file: path=/project/blue/dotstamp_deploy/tool/open-jtalk/voice state=directory owner=root group=root mode=0777
+  tags:
+    - deploy
+- name: make link open jtalk dic
+  become: false
+  file:
+    src: /usr/local/share/open_jtalk/{{open_jtalk_dic_ver}}
+    dest: /project/blue/dotstamp_deploy/tool/open-jtalk/dic
+    state: link
+  tags:
+    - deploy
+- name: make link open jtalk mei voice
+  become: false
+  file:
+    src: /usr/local/share/hts_voice/mei
+    dest: /project/blue/dotstamp_deploy/tool/open-jtalk/voice/mei
+    state: link
+  tags:
+    - deploy
+- name: make link open jtalk m100 voice
+  become: false
+  file:
+    src: /usr/local/share/hts_voice/hts_voice_nitech_jp_atr503_m001-1.05/
+    dest: /project/blue/dotstamp_deploy/tool/open-jtalk/voice/m100
+    state: link
+  tags:
+    - deploy
 - name: project green directory
   become: true
   file: path=/project/green state=directory owner=root group=root mode=0777
+  tags:
+    - deploy
+- name: project green directory tool open-jtalk
+  become: true
+  file: path=/project/green/dotstamp_deploy/tool/open-jtalk/voice state=directory owner=root group=root mode=0777
+  tags:
+    - deploy
+- name: make link open jtalk dic
+  become: false
+  file:
+    src: /usr/local/share/open_jtalk/{{open_jtalk_dic_ver}}
+    dest: /project/green/dotstamp_deploy/tool/open-jtalk/dic
+    state: link
+  tags:
+    - deploy
+- name: make link open jtalk mei voice
+  become: false
+  file:
+    src: /usr/local/share/hts_voice/mei
+    dest: /project/green/dotstamp_deploy/tool/open-jtalk/voice/mei
+    state: link
+  tags:
+    - deploy
+- name: make link open jtalk m100 voice
+  become: false
+  file:
+    src: /usr/local/share/hts_voice/hts_voice_nitech_jp_atr503_m001-1.05/
+    dest: /project/green/dotstamp_deploy/tool/open-jtalk/voice/m100
+    state: link
   tags:
     - deploy
 - name: make deploy shell

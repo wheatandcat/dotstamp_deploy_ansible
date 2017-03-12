@@ -8,10 +8,10 @@ sh /root/active-sever.sh green blue
 echo -e "\n\e[32m[blue sync]-------------------------------\n\e[m"
 
 # blue sync (static/files/)
-rsync -arv --copy-links --exclude=".*" --exclude="static/files/*" --delete /project/dotstamp_deploy /project/blue
+rsync -arv --copy-links --exclude=".*" --exclude="static/files/*" --exclude="tool/*" --delete /project/dotstamp_deploy /project/blue
 
 # blue sync (static/files/)
-rsync -arv --copy-links --exclude=".*" /project/dotstamp_deploy/static/files /project/blue/dotstamp_deploy/static
+rsync -arv --copy-links --exclude=".*" --exclude="tool/*" /project/dotstamp_deploy/static/files /project/blue/dotstamp_deploy/static
 
 echo -e "\n\e[32m[blue change]-------------------------------\n\e[m"
 
@@ -21,7 +21,7 @@ sh /root/active-sever.sh blue green
 echo -e "\n\e[32m[green sync]-------------------------------\n\e[m"
 
 # green sync (static/files/)
-rsync -arv --copy-links --exclude=".*" --exclude="static/files/*" --delete /project/dotstamp_deploy /project/green
+rsync -arv --copy-links --exclude=".*" --exclude="static/files/*" --exclude="tool/*" --delete /project/dotstamp_deploy /project/green
 
 # green static/files make link
 ln -s /project/blue/dotstamp_deploy/static/files /project/green/dotstamp_deploy/static/files
