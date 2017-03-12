@@ -1,5 +1,10 @@
 - name: clone repo dotstamp_deploy_script
   become: false
-  git: "repo=git@bitbucket.org:pandemo/dotstamp_deploy_script.git dest={{ deploy_script_repository_dir }}dotstamp_deploy_script accept_hostkey=true"
+  git: "repo=git@github.com:wheatandcat/dotstamp_deploy_script.git dest={{ deploy_script_repository_dir }}dotstamp_deploy_script accept_hostkey=true"
+  tags:
+    - git
+- name: clone repo dotstamp_deploy
+  become: false
+  git: "repo=git@bitbucket.org:wheatandcat/dotstamp_deploy.git dest={{ deploy_script_repository_dir }}dotstamp_deploy accept_hostkey=true"
   tags:
     - git
