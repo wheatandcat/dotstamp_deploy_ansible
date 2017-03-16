@@ -1,3 +1,8 @@
+- name: make logs dir
+  become: true
+  file: path=/project/logs state=directory owner=root group=root mode=0777
+  tags:
+    - deploy
 - name: clone repo dotstamp_deploy
   become: false
   git: "repo=git@bitbucket.org:wheatandcat/dotstamp_deploy.git dest=/project/dotstamp_deploy accept_hostkey=true"
