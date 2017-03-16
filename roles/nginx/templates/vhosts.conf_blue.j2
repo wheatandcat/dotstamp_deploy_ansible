@@ -18,6 +18,12 @@ server {
         root "/project/blue/dotstamp_deploy";
     }
 
+    location /sound/make/ {
+        fastcgi_read_timeout 180;
+
+        try_files /_not_exists_ @backend;
+    }
+
     location / {
         try_files /_not_exists_ @backend;
     }
