@@ -2,6 +2,7 @@ server {
     listen 80;
 
     server_name dotstamp.com;
+    server_tokens off;
 
     charset utf-8;
     index index.html index.htm;
@@ -10,7 +11,7 @@ server {
     error_log /var/log/nginx/error.log error;
 
     location /static/ {
-        #access_log off;
+        access_log off;
         expires 1d;
         gzip_static always;
         gunzip on;
