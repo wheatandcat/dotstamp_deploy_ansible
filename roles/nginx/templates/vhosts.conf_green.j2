@@ -25,7 +25,7 @@ server {
         try_files /_not_exists_ @backend;
     }
 
-    location = /movie//make/ {
+    location = /movie/make/ {
         fastcgi_read_timeout 1200;
 
         try_files /_not_exists_ @backend;

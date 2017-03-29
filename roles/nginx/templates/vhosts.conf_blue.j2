@@ -25,7 +25,7 @@ server {
         try_files /_not_exists_ @backend;
     }
 
-    location = /movie//make/ {
+    location = /movie/make/ {
         fastcgi_read_timeout 1200;
 
         try_files /_not_exists_ @backend;
@@ -34,7 +34,6 @@ server {
     location / {
         try_files /_not_exists_ @backend;
     }
-
 
     location @backend {
         proxy_pass http://127.0.0.1:{{ env_server_blue_port }};
