@@ -19,7 +19,13 @@ server {
         root "/project/blue/dotstamp_deploy";
     }
 
-    location /sound/make/ {
+    location = /movie/upload/ {
+        fastcgi_read_timeout 180;
+
+        try_files /_not_exists_ @backend;
+    }
+
+    location = /movie//make/ {
         fastcgi_read_timeout 180;
 
         try_files /_not_exists_ @backend;
@@ -28,6 +34,7 @@ server {
     location / {
         try_files /_not_exists_ @backend;
     }
+
 
     location @backend {
         proxy_pass http://127.0.0.1:{{ env_server_blue_port }};

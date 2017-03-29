@@ -19,7 +19,13 @@ server {
         root "/project/green/dotstamp_deploy";
     }
 
-    location /sound/make/ {
+    location = /movie/upload/ {
+        fastcgi_read_timeout 180;
+
+        try_files /_not_exists_ @backend;
+    }
+
+    location = /movie//make/ {
         fastcgi_read_timeout 180;
 
         try_files /_not_exists_ @backend;
