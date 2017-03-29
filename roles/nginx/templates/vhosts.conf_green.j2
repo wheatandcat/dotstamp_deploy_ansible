@@ -20,13 +20,13 @@ server {
     }
 
     location = /movie/upload/ {
-        fastcgi_read_timeout 180;
+        fastcgi_read_timeout 1200;
 
         try_files /_not_exists_ @backend;
     }
 
     location = /movie//make/ {
-        fastcgi_read_timeout 180;
+        fastcgi_read_timeout 1200;
 
         try_files /_not_exists_ @backend;
     }

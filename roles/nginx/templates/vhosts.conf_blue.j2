@@ -7,7 +7,7 @@ server {
     charset utf-8;
     index index.html index.htm;
 
-    access_log /var/log/nginx/access.log;
+    access_log /var/log/nginx/access.log main;
     error_log /var/log/nginx/error.log error;
 
     location /static/ {
@@ -20,13 +20,13 @@ server {
     }
 
     location = /movie/upload/ {
-        fastcgi_read_timeout 180;
+        fastcgi_read_timeout 1200;
 
         try_files /_not_exists_ @backend;
     }
 
     location = /movie//make/ {
-        fastcgi_read_timeout 180;
+        fastcgi_read_timeout 1200;
 
         try_files /_not_exists_ @backend;
     }
