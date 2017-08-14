@@ -11,3 +11,4 @@
 metas/
 *.retry
 production
+fetch/*
